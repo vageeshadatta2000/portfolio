@@ -9,141 +9,113 @@
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Inter', sans-serif;
+      margin: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
-
-    .fade-in {
-      animation: fadeIn 1s ease-in-out forwards;
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes wave {
-      0% {
-        transform: rotate(0.0deg);
-      }
-
-      15% {
-        transform: rotate(14.0deg);
-      }
-
-      30% {
-        transform: rotate(-8.0deg);
-      }
-
-      40% {
-        transform: rotate(14.0deg);
-      }
-
-      50% {
-        transform: rotate(-4.0deg);
-      }
-
-      60% {
-        transform: rotate(10.0deg);
-      }
-
-      70% {
-        transform: rotate(0.0deg);
-      }
-
-      100% {
-        transform: rotate(0.0deg);
-      }
-    }
-
-    .animate-wave {
-      animation: wave 2s infinite;
-      transform-origin: 70% 70%;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    .fade-out {
-      animation: fadeOut 1s forwards;
-    }
-
-    .animate-fadein {
-      animation: fadeIn 1.5s ease-in-out forwards;
+    .dark-mode {
+      background-color: #1a202c;
+      color: #e2e8f0;
     }
   </style>
 </head>
 
 <body class="bg-gray-100 text-gray-900">
-  <!-- Greeting Animation -->
-  <div id="greeting" class="fixed inset-0 bg-white flex items-center justify-center z-50">
-    <div class="text-center text-3xl md:text-5xl font-extrabold text-indigo-600 animate-fadein">
-      <span class="inline-block animate-wave text-6xl mr-2">👋</span>
-      Hi, welcome to my website!
-    </div>
-  </div>
+  <div id="tsparticles"></div>
+  <div id="root"></div>
 
-  <!-- React Root -->
-  <div id="root" class="min-h-screen flex items-center justify-center p-4"></div>
-
-  <!-- React Script -->
   <script type="text/babel">
-    const { useState, useEffect } = React;
+    const { useEffect, useState } = React;
+
+    const Section = ({ id, title, children }) => (
+      <section id={id} className="py-20 px-6 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold text-indigo-600 mb-4">{title}</h2>
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
+          {children}
+        </div>
+      </section>
+    );
 
     const App = () => {
-      const [loaded, setLoaded] = useState(false);
+      const [darkMode, setDarkMode] = useState(false);
 
       useEffect(() => {
-        setTimeout(() => {
-          setLoaded(true);
-          const greeting = document.getElementById('greeting');
-          if (greeting) {
-            greeting.classList.add('fade-out');
-            setTimeout(() => greeting.style.display = 'none', 1000);
+        document.body.classList.toggle("dark-mode", darkMode);
+      }, [darkMode]);
+
+      useEffect(() => {
+        tsParticles.load("tsparticles", {
+          fullScreen: { enable: true },
+          particles: {
+            number: { value: 50 },
+            color: { value: darkMode ? "#fbbf24" : "#6366f1" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5 },
+            size: { value: 3 },
+            move: { enable: true, speed: 1 }
+          },
+          interactivity: {
+            events: { onhover: { enable: true, mode: "repulse" } },
+            modes: { repulse: { distance: 100 } }
           }
-        }, 2200); // Time before greeting fades
-      }, []);
+        });
+      }, [darkMode]);
 
       return (
-        <div className={`max-w-4xl w-full mx-auto ${loaded ? 'fade-in' : ''}`}>
-          <header className="bg-white p-6 rounded-2xl shadow-lg mb-6 transition-all duration-500 hover:shadow-xl">
-            <h1 className="text-4xl font-extrabold text-indigo-600 mb-2">Vageesha Datta Ganapaneni</h1>
-            <p className="text-lg text-gray-600">Frontend Developer | React Enthusiast</p>
-            <p className="text-sm text-gray-500">
-              Email: <a href="mailto:vageeshadattag@gmail.com" className="text-indigo-500 hover:underline">vageeshadattag@gmail.com</a> | Phone: +1(469) 805-1906 |
-              <a href="https://linkedin.com/in/vageeshadatta" className="text-indigo-500 hover:underline ml-1">LinkedIn</a> | Dublin, California
-            </p>
+        <div>
+          <header className="bg-white dark:bg-gray-900 fixed top-0 left-0 w-full shadow-md z-50">
+            <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+              <h1 className="text-xl font-bold text-indigo-600">Vageesha Datta</h1>
+              <div className="flex items-center space-x-4">
+                <nav className="space-x-4 hidden md:block">
+                  {['home', 'about', 'education', 'experience', 'projects', 'skills', 'contact'].map((id) => (
+                    <a key={id} href={`#${id}`} className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 capitalize">
+                      {id}
+                    </a>
+                  ))}
+                </nav>
+                <button onClick={() => setDarkMode(!darkMode)} className="px-3 py-1 text-sm rounded bg-indigo-600 text-white hover:bg-indigo-700">
+                  {darkMode ? "Light Mode" : "Dark Mode"}
+                </button>
+                <a href="/mnt/data/SDE_Resume.pdf" download className="px-3 py-1 text-sm rounded bg-yellow-500 text-white hover:bg-yellow-600">
+                  Resume
+                </a>
+              </div>
+            </div>
           </header>
 
-          <main className="space-y-6">
-            <section className="bg-white p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
-              <h2 className="text-2xl font-bold mb-2">About Me</h2>
-              <p>I am a Master’s student in Computer Science at UT Dallas, with strong foundations in machine learning, full-stack development, and cloud technologies. I specialize in building scalable and performant applications, and I’m passionate about model optimization and distributed AI systems.</p>
-            </section>
+          <main className="pt-24">
+            <Section id="home" title="Hi 👋 Welcome to My Portfolio">
+              <p>I’m Vageesha Datta Ganapaneni, a frontend developer and ML researcher. Explore below to know more about my work and experience!</p>
+            </Section>
 
-            <section className="bg-white p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
-              <h2 className="text-2xl font-bold mb-2">Education</h2>
+            <Section id="about" title="About Me">
+              <p>I am a Master’s student in Computer Science at UT Dallas, with strong foundations in machine learning, full-stack development, and cloud technologies. I specialize in building scalable and performant applications, and I’m passionate about model optimization and distributed AI systems.</p>
+            </Section>
+
+            <Section id="education" title="Education">
               <ul className="list-disc pl-6 space-y-1">
                 <li><strong>University of Texas, Dallas</strong> — MS in Computer Science (2022–2025), GPA: 3.6/4.0</li>
                 <li><strong>SRM University, AP</strong> — B.Tech in Computer Science (2018–2022), GPA: 9.06/10.00</li>
               </ul>
-            </section>
+            </Section>
 
-            <section className="bg-white p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
-              <h2 className="text-2xl font-bold mb-2">Experience</h2>
+            <Section id="experience" title="Experience">
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>Graduate Researcher</strong> — CVMC Lab, Dallas (2023–2024)
                   <ul className="list-disc ml-6">
@@ -163,18 +135,16 @@
                   </ul>
                 </li>
               </ul>
-            </section>
+            </Section>
 
-            <section className="bg-white p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
-              <h2 className="text-2xl font-bold mb-2">Projects</h2>
+            <Section id="projects" title="Projects">
               <ul className="list-disc pl-6 space-y-1">
                 <li><strong>Healthcare Chatbot with RAG:</strong> React frontend with real-time chat, FAISS + SentenceTransformers backend, improved context accuracy by 19%.</li>
                 <li><strong>StreamStyle:</strong> Scalable real-time video style transfer with React, Flask, AWS EC2, Docker — reduced flickering by 50% and compute by 15%.</li>
               </ul>
-            </section>
+            </Section>
 
-            <section className="bg-white p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
-              <h2 className="text-2xl font-bold mb-2">Technical Skills</h2>
+            <Section id="skills" title="Technical Skills">
               <ul className="list-disc pl-6 space-y-1">
                 <li><strong>Languages:</strong> JavaScript, TypeScript, Python, HTML, CSS, SQL, Bash, C++</li>
                 <li><strong>Frameworks:</strong> React, Angular, PyTorch, TensorFlow, Bootstrap, Material UI</li>
@@ -182,27 +152,26 @@
                 <li><strong>DevOps:</strong> Docker, AWS (EC2, S3, Lambda, Auto Scaling), Terraform, Git, Linux</li>
                 <li><strong>Interests:</strong> OOP, DSA, Agile, Deep Learning, NLP, Model Optimization, Fault-Tolerant & Distributed AI Systems</li>
               </ul>
-            </section>
+            </Section>
 
-            <section className="bg-white p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
-              <h2 className="text-2xl font-bold mb-2">Contact</h2>
+            <Section id="contact" title="Contact">
               <form className="space-y-4">
                 <input type="text" placeholder="Your Name" className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" />
                 <input type="email" placeholder="Your Email" className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" />
                 <textarea placeholder="Message" className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"></textarea>
                 <button type="submit" className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-semibold">Send</button>
               </form>
-            </section>
+            </Section>
           </main>
 
-          <footer className="mt-10 text-center text-gray-500">
+          <footer className="mt-10 text-center text-gray-500 py-6">
             &copy; {new Date().getFullYear()} Vageesha Datta Ganapaneni
           </footer>
         </div>
       );
     };
 
-    ReactDOM.render(<App />, document.getElementById('root'));
+    ReactDOM.render(<App />, document.getElementById("root"));
   </script>
 </body>
 
