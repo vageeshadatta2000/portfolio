@@ -101,7 +101,10 @@
 
           <main className="pt-32 space-y-16">
             <Section id="home" title="Welcome to My Technical Portfolio">
-              <p className="text-lg leading-relaxed">Hi, I'm <strong>Vageesha Datta Ganapaneni</strong>, a passionate ML researcher and full-stack engineer with a deep focus on system performance, LLM applications, and scalable AI architectures. This portfolio is a window into my technical journey, research innovations, and engineering craftsmanship.</p>
+              <div className="flex flex-col md:flex-row items-center justify-between">
+                <p className="text-lg leading-relaxed md:w-2/3">Hi, I'm <strong>Vageesha Datta Ganapaneni</strong>, a passionate ML researcher and full-stack engineer with a deep focus on system performance, LLM applications, and scalable AI architectures. This portfolio is a window into my technical journey, research innovations, and engineering craftsmanship.</p>
+                <img src="your-image.jpg" alt="Vageesha Datta" className="w-40 h-40 rounded-full mt-6 md:mt-0 md:ml-6 shadow-lg" />
+              </div>
             </Section>
 
             <Section id="about" title="About Me">
@@ -129,17 +132,32 @@
                 <div>
                   <h3 className="text-xl font-semibold">AI Researcher @ Allen Institute for AI (Jan 2025 – May 2025)</h3>
                   <ul className="list-disc list-inside ml-4">
-                    <li>Implemented Optimization by Prompting (OPRO) to enhance few-shot inference quality by 12%.</li>
-                    <li>Built belief-tracking framework using entropy, KL divergence, and AutoGen for LLM introspection.</li>
-                    <li>Developed interactive D3.js experiment visualizations to debug belief evolution.</li>
+                    <li>Implemented OPRO to enhance few-shot inference quality by 12%.</li>
+                    <li>Built belief-tracking framework using entropy, KL divergence, and AutoGen.</li>
+                    <li>Developed interactive D3.js experiment visualizations for LLM debugging.</li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold">Software Engineer Intern @ Rocktop Technologies (Sep 2023 – Jul 2024)</h3>
                   <ul className="list-disc list-inside ml-4">
-                    <li>Developed microservices in Python for financial risk ingestion using PyTorch-based generative models.</li>
-                    <li>Created NLP-driven conversational search for internal fixed-income analytics platform.</li>
-                    <li>Deployed AI inference services with Flask, integrated into CI/CD pipelines, improving automation.</li>
+                    <li>Built generative AI microservices in Python for financial data analysis.</li>
+                    <li>Developed NLP-based conversational search and Flask APIs.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold">Software Engineer @ Fiserv (Dec 2020 – May 2022)</h3>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>Deployed Kafka-based microservices with Jenkins CI/CD and CockroachDB.</li>
+                    <li>Built real-time React + Spring Boot dashboards and integrated observability with Prometheus + Grafana.</li>
+                    <li>Refactored frontend with Docker and deployed to AWS EC2, reducing tickets by 25%.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold">Machine Learning Intern @ Madras Scientific Research Foundation (Apr 2020 – Aug 2020)</h3>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>Engineered Dense Rebar Recognition model with TensorFlow, improving inference by 20%.</li>
+                    <li>Achieved 98% model accuracy with robust QA compliance and recovery systems.</li>
+                    <li>Designed scalable preprocessing using NumPy and TensorFlow, streamlining GPU deployment.</li>
                   </ul>
                 </div>
               </div>
@@ -148,16 +166,19 @@
             <Section id="projects" title="Projects">
               <div className="space-y-4">
                 <div>
-                  <strong>InsightBridge</strong>: LLM-powered document analysis tool using RAG
-                  <p className="ml-4">LangChain + RecursiveCharacterTextSplitter + FAISS + ChatOpenAI stack for dense semantic indexing and retrieval. Built for long-form document QA with high contextual grounding.</p>
+                  <strong>InsightBridge</strong>: RAG-powered document analysis platform &nbsp;
+                  <a className="text-indigo-600 underline" href="https://github.com/your-username/InsightBridge">GitHub</a>
+                  <p className="ml-4">LangChain + RecursiveChunking + FAISS + ChatOpenAI backend for accurate document QA.</p>
                 </div>
                 <div>
-                  <strong>MediQuery</strong>: Instruction-tuned healthcare chatbot
-                  <p className="ml-4">React frontend with modular state management, GPU-accelerated batch inference, RAG-based context embedding with SentenceTransformers. Achieved 19% improvement in relevance over baseline.</p>
+                  <strong>MediQuery</strong>: Instruction-tuned Healthcare Chatbot &nbsp;
+                  <a className="text-indigo-600 underline" href="https://github.com/your-username/MediQuery">GitHub</a>
+                  <p className="ml-4">React + Flask system with FAISS + SentenceTransformers backend. Achieved 19% context gain.</p>
                 </div>
                 <div>
-                  <strong>StreamStyle</strong>: Real-time video style transfer platform
-                  <p className="ml-4">Front-end in React + backend Flask APIs hosted on AWS EC2. Utilized AdaIN & mixed-precision training to reduce flicker and improve rendering efficiency.</p>
+                  <strong>StreamStyle</strong>: Real-time Video Style Transfer &nbsp;
+                  <a className="text-indigo-600 underline" href="https://github.com/your-username/StreamStyle">GitHub</a>
+                  <p className="ml-4">React frontend + Flask backend + AWS deployment. Used AdaIN and mixed-precision for efficiency.</p>
                 </div>
               </div>
             </Section>
@@ -169,7 +190,7 @@
                 <li><strong>Libraries:</strong> AutoGen, D3.js, Material UI, LangChain, SentenceTransformers</li>
                 <li><strong>DevOps:</strong> Docker, AWS, Terraform, Jenkins, Kafka, Git</li>
                 <li><strong>Databases:</strong> CockroachDB, PostgreSQL, FAISS</li>
-                <li><strong>Others:</strong> REST APIs, CI/CD, Monitoring with Prometheus & Grafana</li>
+                <li><strong>Others:</strong> REST APIs, CI/CD, Prometheus, Grafana, Unix/Linux</li>
               </ul>
             </Section>
 
