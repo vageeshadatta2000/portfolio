@@ -43,9 +43,9 @@
     const { useEffect, useState } = React;
 
     const Section = ({ id, title, children }) => (
-      <section id={id} className="py-20 px-6 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-indigo-600 mb-4">{title}</h2>
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
+      <section id={id} className="py-20 px-6 max-w-5xl mx-auto">
+        <h2 className="text-4xl font-extrabold text-indigo-600 mb-6 border-b pb-2 border-indigo-300">{title}</h2>
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg transition-transform duration-300 hover:scale-[1.02]">
           {children}
         </div>
       </section>
@@ -62,16 +62,16 @@
         tsParticles.load("tsparticles", {
           fullScreen: { enable: true },
           particles: {
-            number: { value: 50 },
+            number: { value: 80 },
             color: { value: darkMode ? "#fbbf24" : "#6366f1" },
             shape: { type: "circle" },
-            opacity: { value: 0.5 },
+            opacity: { value: 0.4 },
             size: { value: 3 },
-            move: { enable: true, speed: 1 }
+            move: { enable: true, speed: 0.8 }
           },
           interactivity: {
             events: { onhover: { enable: true, mode: "repulse" } },
-            modes: { repulse: { distance: 100 } }
+            modes: { repulse: { distance: 80 } }
           }
         });
       }, [darkMode]);
@@ -79,93 +79,108 @@
       return (
         <div>
           <header className="bg-white dark:bg-gray-900 fixed top-0 left-0 w-full shadow-md z-50">
-            <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-              <h1 className="text-xl font-bold text-indigo-600">Vageesha Datta</h1>
+            <div className="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
+              <h1 className="text-2xl font-extrabold text-indigo-600">Vageesha Datta</h1>
               <div className="flex items-center space-x-4">
                 <nav className="space-x-4 hidden md:block">
-                  {['home', 'about', 'education', 'experience', 'projects', 'skills', 'contact'].map((id) => (
-                    <a key={id} href={`#${id}`} className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 capitalize">
+                  {["home", "about", "education", "experience", "projects", "skills", "contact"].map((id) => (
+                    <a key={id} href={`#${id}`} className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 capitalize font-medium">
                       {id}
                     </a>
                   ))}
                 </nav>
-                <button onClick={() => setDarkMode(!darkMode)} className="px-3 py-1 text-sm rounded bg-indigo-600 text-white hover:bg-indigo-700">
+                <button onClick={() => setDarkMode(!darkMode)} className="px-4 py-2 text-sm rounded bg-indigo-600 text-white hover:bg-indigo-700">
                   {darkMode ? "Light Mode" : "Dark Mode"}
                 </button>
-                <a href="SDE_Resume.pdf" download className="px-3 py-1 text-sm rounded bg-yellow-500 text-white hover:bg-yellow-600">
+                <a href="SDE_Resume.pdf" download className="px-4 py-2 text-sm rounded bg-yellow-500 text-white hover:bg-yellow-600">
                   Resume
                 </a>
               </div>
             </div>
           </header>
 
-          <main className="pt-24">
-            <Section id="home" title="Hi 👋 Welcome to My Portfolio">
-              <p>I’m Vageesha Datta Ganapaneni, a frontend developer and ML researcher. Explore below to know more about my work and experience!</p>
+          <main className="pt-32 space-y-16">
+            <Section id="home" title="Welcome to My Technical Portfolio">
+              <p className="text-lg leading-relaxed">Hi, I'm <strong>Vageesha Datta Ganapaneni</strong>, a passionate ML researcher and full-stack engineer with a deep focus on system performance, LLM applications, and scalable AI architectures. This portfolio is a window into my technical journey, research innovations, and engineering craftsmanship.</p>
             </Section>
 
             <Section id="about" title="About Me">
-              <p>I am a Master’s student in Computer Science at UT Dallas, with strong foundations in machine learning, full-stack development, and cloud technologies. I specialize in building scalable and performant applications, and I’m passionate about model optimization and distributed AI systems.</p>
+              <p className="text-lg leading-relaxed">I'm currently pursuing an MS in Computer Science at The University of Texas at Dallas. With hands-on experience in ML pipelines, generative AI, and full-stack web development, I bring a unique blend of engineering rigor and research curiosity. My interests lie at the intersection of model optimization, interpretability, and real-world system integration. I specialize in building AI systems that are not only performant but also interpretable and robust — from prompt-tuned LLM agents to cloud-native microservices.</p>
             </Section>
 
             <Section id="education" title="Education">
-              <ul className="list-disc pl-6 space-y-1">
-                <li><strong>University of Texas at Dallas</strong> — MS in Computer Science (Aug 2022 – May 2025), GPA: 3.6/4.0<br />
-                Relevant Coursework: Machine Learning, AI, NLP, Computer Vision, Statistics in ML</li>
-                <li><strong>SRM University, AP</strong> — B.Tech in Computer Science and Engineering (2018–2022), GPA: 9.06/10.00</li>
+              <ul className="space-y-2">
+                <li>
+                  <strong>University of Texas at Dallas</strong><br/>
+                  Master of Science in Computer Science (Aug 2022 – May 2025)<br/>
+                  <em>GPA:</em> 3.6/4.0<br/>
+                  <em>Courses:</em> ML, NLP, CV, AI, Statistics in ML
+                </li>
+                <li>
+                  <strong>SRM University, AP</strong><br/>
+                  Bachelor of Technology in Computer Science and Engineering (Aug 2018 – June 2022)<br/>
+                  <em>GPA:</em> 9.06/10.00
+                </li>
               </ul>
             </Section>
 
             <Section id="experience" title="Experience">
-              <ul className="list-disc pl-6 space-y-4">
-                <li><strong>AI Researcher</strong> — Allen Institute for AI (Jan 2025 – May 2025)
-                  <ul className="list-disc ml-6">
-                    <li>Implemented OPRO for test-time LLM steering, improving hypothesis accuracy by 12%.</li>
-                    <li>Built a belief-tracking framework using AutoGen, entropy, and KL divergence.</li>
-                    <li>Visualized belief evolution in LLMs via interactive D3.js experiment trees.</li>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold">AI Researcher @ Allen Institute for AI (Jan 2025 – May 2025)</h3>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>Implemented Optimization by Prompting (OPRO) to enhance few-shot inference quality by 12%.</li>
+                    <li>Built belief-tracking framework using entropy, KL divergence, and AutoGen for LLM introspection.</li>
+                    <li>Developed interactive D3.js experiment visualizations to debug belief evolution.</li>
                   </ul>
-                </li>
-                <li><strong>Software Engineer Intern</strong> — Rocktop Technologies (Sep 2023 – Jul 2024)
-                  <ul className="list-disc ml-6">
-                    <li>Developed Python + PyTorch microservices for generative AI and LLM tuning.</li>
-                    <li>Created Flask APIs to automate fixed-income risk analysis workflows.</li>
-                    <li>Integrated NLP-based conversational search for financial datasets.</li>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold">Software Engineer Intern @ Rocktop Technologies (Sep 2023 – Jul 2024)</h3>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>Developed microservices in Python for financial risk ingestion using PyTorch-based generative models.</li>
+                    <li>Created NLP-driven conversational search for internal fixed-income analytics platform.</li>
+                    <li>Deployed AI inference services with Flask, integrated into CI/CD pipelines, improving automation.</li>
                   </ul>
-                </li>
-                <li><strong>Software Engineer</strong> — Fiserv India (Dec 2020 – May 2022)
-                  <ul className="list-disc ml-6">
-                    <li>Deployed Kafka microservices with Jenkins CI/CD and CockroachDB.</li>
-                    <li>Built React + Spring Boot dashboards with live production metrics.</li>
-                    <li>Containerized and deployed frontend to AWS EC2 using Docker.</li>
-                  </ul>
-                </li>
-              </ul>
+                </div>
+              </div>
             </Section>
 
             <Section id="projects" title="Projects">
-              <ul className="list-disc pl-6 space-y-4">
-                <li><strong>InsightBridge:</strong> RAG-based document analyzer with LangChain, FAISS, and ChatOpenAI.</li>
-                <li><strong>MediQuery:</strong> Instruction-tuned React chatbot with real-time FAISS + SentenceTransformer backend.</li>
-                <li><strong>StreamStyle:</strong> Real-time video style transfer with React, Flask, and AdaIN on AWS.</li>
-              </ul>
+              <div className="space-y-4">
+                <div>
+                  <strong>InsightBridge</strong>: LLM-powered document analysis tool using RAG
+                  <p className="ml-4">LangChain + RecursiveCharacterTextSplitter + FAISS + ChatOpenAI stack for dense semantic indexing and retrieval. Built for long-form document QA with high contextual grounding.</p>
+                </div>
+                <div>
+                  <strong>MediQuery</strong>: Instruction-tuned healthcare chatbot
+                  <p className="ml-4">React frontend with modular state management, GPU-accelerated batch inference, RAG-based context embedding with SentenceTransformers. Achieved 19% improvement in relevance over baseline.</p>
+                </div>
+                <div>
+                  <strong>StreamStyle</strong>: Real-time video style transfer platform
+                  <p className="ml-4">Front-end in React + backend Flask APIs hosted on AWS EC2. Utilized AdaIN & mixed-precision training to reduce flicker and improve rendering efficiency.</p>
+                </div>
+              </div>
             </Section>
 
             <Section id="skills" title="Technical Skills">
-              <ul className="list-disc pl-6 space-y-1">
-                <li><strong>Languages:</strong> Python, JavaScript, TypeScript, C++, SQL, Bash, HTML, CSS</li>
-                <li><strong>Frameworks:</strong> PyTorch, TensorFlow, Flask, FastAPI, React, Angular, Spring Boot, Material UI, AutoGen, D3.js</li>
-                <li><strong>Tools:</strong> Docker, AWS, Terraform, Jenkins, Kafka, CockroachDB, Git, Prometheus, Grafana, Unix/Linux, REST APIs</li>
+              <ul className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                <li><strong>Languages:</strong> Python, JavaScript, TypeScript, C++, SQL, Bash</li>
+                <li><strong>Frameworks:</strong> PyTorch, TensorFlow, Flask, FastAPI, React, Angular, Spring Boot</li>
+                <li><strong>Libraries:</strong> AutoGen, D3.js, Material UI, LangChain, SentenceTransformers</li>
+                <li><strong>DevOps:</strong> Docker, AWS, Terraform, Jenkins, Kafka, Git</li>
+                <li><strong>Databases:</strong> CockroachDB, PostgreSQL, FAISS</li>
+                <li><strong>Others:</strong> REST APIs, CI/CD, Monitoring with Prometheus & Grafana</li>
               </ul>
             </Section>
 
             <Section id="contact" title="Contact">
-              <p>Email: <a className="text-indigo-600" href="mailto:vageeshaganapaneni@gmail.com">vageeshaganapaneni@gmail.com</a></p>
-              <p>LinkedIn: <a className="text-indigo-600" href="https://www.linkedin.com/in/vageesha-datta-ganapaneni-094ab7184/">linkedin.com/in/vageesha-datta-ganapaneni</a></p>
+              <p className="mb-2">Email: <a className="text-indigo-600" href="mailto:vageeshaganapaneni@gmail.com">vageeshaganapaneni@gmail.com</a></p>
+              <p className="mb-2">LinkedIn: <a className="text-indigo-600" href="https://www.linkedin.com/in/vageesha-datta-ganapaneni-094ab7184/">linkedin.com/in/vageesha-datta-ganapaneni</a></p>
               <p>GitHub: <a className="text-indigo-600" href="https://github.com/vageeshadatta2000">github.com/vageeshadatta2000</a></p>
             </Section>
           </main>
 
-          <footer className="mt-10 text-center text-gray-500 py-6">
+          <footer className="mt-20 text-center text-gray-500 py-6">
             &copy; {new Date().getFullYear()} Vageesha Datta Ganapaneni
           </footer>
         </div>
