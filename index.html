@@ -15,11 +15,13 @@
     html {
       scroll-behavior: smooth;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       transition: background-color 0.3s, color 0.3s;
     }
+
     #tsparticles {
       position: fixed;
       top: 0;
@@ -28,16 +30,20 @@
       height: 100%;
       z-index: -1;
     }
+
     .dark-mode {
       background-color: #0f172a;
       color: #cbd5e1;
     }
+
     .dark-mode .bg-white {
       background-color: #1e293b;
     }
+
     .dark-mode .text-gray-700 {
       color: #cbd5e1;
     }
+
     .responsive-nav {
       flex-wrap: wrap;
     }
@@ -100,7 +106,7 @@
                   {darkMode ? "Light Mode" : "Dark Mode"}
                 </button>
                 <a href="MyResume.pdf" download className="px-6 py-3 text-base rounded-xl bg-yellow-500 text-white hover:bg-yellow-600">
-                  Donwload Resume
+                  Download Resume
                 </a>
               </nav>
             </div>
@@ -121,14 +127,14 @@
             <Section id="education" title="Education">
               <ul className="space-y-2">
                 <li>
-                  <strong>University of Texas at Dallas</strong><br/>
-                  Master of Science in Computer Science (Aug 2022 – May 2025)<br/>
-                  <em>GPA:</em> 3.6/4.0<br/>
-                  <em>Courses:</em> Machine Learning, Natural Language Processing, Computer Vision, Artificial Inteliigence, Statistics in AI & ML
+                  <strong>University of Texas at Dallas</strong><br />
+                  Master of Science in Computer Science (Aug 2022 – May 2025)<br />
+                  <em>GPA:</em> 3.6/4.0<br />
+                  <em>Courses:</em> Machine Learning, Natural Language Processing, Computer Vision, Artificial Intelligence, Statistics in AI & ML
                 </li>
                 <li>
-                  <strong>SRM University, AP</strong><br/>
-                  Bachelor of Technology in Computer Science and Engineering (Aug 2018 – June 2022)<br/>
+                  <strong>SRM University, AP</strong><br />
+                  Bachelor of Technology in Computer Science and Engineering (Aug 2018 – June 2022)<br />
                   <em>GPA:</em> 9.06/10.00
                 </li>
               </ul>
@@ -167,29 +173,25 @@
                     <li>Designed GPU-ready preprocessing pipelines using NumPy + TF</li>
                   </ul>
                 </div>
-                 <div>
-                <h3 className="text-xl font-semibold">Software Engineer @ GeeksforGeeks India</h3>
-                <ul className="list-disc ml-6">
-                  <li>Built frontend features for educational tools using HTML, CSS, and JavaScript</li>
-                  <li>Collaborated with backend developers to integrate Django-based REST APIs</li>
-                  <li>Improved browser compatibility and frontend performance by debugging layout issues</li>
-                </ul>
+                <div>
+                  <h3 className="text-xl font-semibold">Software Engineer @ GeeksforGeeks India</h3>
+                  <ul className="list-disc ml-6">
+                    <li>Built frontend features for educational tools using HTML, CSS, and JavaScript</li>
+                    <li>Collaborated with backend developers to integrate Django-based REST APIs</li>
+                    <li>Improved browser compatibility and frontend performance by debugging layout issues</li>
+                  </ul>
+                </div>
               </div>
-              </div>
-            </div>
             </Section>
 
             <Section id="projects" title="Projects">
               <ul className="space-y-4">
-                <li><strong>InsightBridge</strong>: Constructed a semantic document analysis pipeline using LangChain and FAISS for efficient long-text retrieval.Integrated Retrieval-Augmented Generation (RAG) with OpenAI models to generate context-aware, grounded answers. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/InsightBridge">GitHub</a></li>
+                <li><strong>InsightBridge</strong>: Constructed a semantic document analysis pipeline using LangChain and FAISS for efficient long-text retrieval. Integrated Retrieval-Augmented Generation (RAG) with OpenAI models to generate context-aware, grounded answers. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/InsightBridge">GitHub</a></li>
                 <li><strong>MediQuery</strong>: Developed a chat-based healthcare assistant using React and Flask with sub-second GPU inference speeds. Applied RAG and SentenceTransformers to improve response relevance by 19% through instruction tuning. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/MediQuery">GitHub</a></li>
-                <li><strong>StreamStyle</strong>: Built a scalable frontend-backend pipeline for live video stylization using React, Flask, and Docker on AWS. Integrated AdaIN and mixed-precision training to improve visual consistency and reduce compute overhead by 15%<a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/StreamStyle">GitHub</a></li>
-                <li><strong>Real-Time Hand Gesture Control System with Hardware Integration</strong>: Developed a full-stack gesture recognition pipeline with OpenCV and MobileNetV2 (87% accuracy), using Flask and WebRTC to enable real-time, hardware-independent interaction over web interfaces. Achieved a 35% boost in frame processing efficiency via optimized video-to-image streaming. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/InsightBridge">GitHub</a></li>
-
-                <li><strong>Backend Pipeline for Disaster Data Classification and Analysis</strong>: Built a real-time tweet classification platform using FastAPI and React, deploying LSTM, BiLSTM, and GRU models with F1 scores of 0.92, 0.89, and 0.87. Integrated GloVe embeddings and RESTful APIs to support dynamic, scalable disaster data analysis and visualization. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/InsightBridge">GitHub</a></li>
-
-                <li><strong>Full-Stack Telugu Handwritten Character Recognition</strong>: Developed an end-to-end system to classify handwritten Telugu characters into 52 classes using a custom dataset. Built a CNN in TensorFlow (94.6% test accuracy), with a Flask backend and a React frontend for real-time image upload and classification. Deployed using Docker and Nginx for scalable access. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/InsightBridge">GitHub</a></li>
-            </ul>
+                <li><strong>StreamStyle</strong>: Built a scalable frontend-backend pipeline for live video stylization using React, Flask, and Docker on AWS. Integrated AdaIN and mixed-precision training to improve visual consistency and reduce compute overhead by 15%. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/StreamStyle">GitHub</a></li>
+                <li><strong>Gesture Control System</strong>: Developed a full-stack gesture recognition pipeline with OpenCV and MobileNetV2 (87% accuracy), using Flask and WebRTC to enable real-time, hardware-independent interaction over web interfaces. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/Gesture-Control-System">GitHub</a></li>
+                <li><strong>Disaster Tweet Classifier</strong>: Built a real-time tweet classification platform using FastAPI and React, deploying LSTM, BiLSTM, and GRU models. Integrated GloVe embeddings and RESTful APIs. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/DisasterTweetClassifier">GitHub</a></li>
+                <li><strong>Telugu Handwriting Recognition</strong>: Built a TensorFlow CNN (94.6% accuracy) with Flask backend + React frontend for real-time Telugu character recognition. <a className="text-indigo-600 underline" href="https://github.com/vageeshadatta2000/TeluguHandwritingRecognition">GitHub</a></li>
               </ul>
             </Section>
 
