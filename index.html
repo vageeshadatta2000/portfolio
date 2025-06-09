@@ -58,7 +58,7 @@
     const { useEffect, useState } = React;
 
     const Section = ({ id, title, children }) => (
-      <section id={id} className="py-20 px-6 max-w-7xl mx-auto">
+      <section id={id} className="scroll-mt-32 py-20 px-6 max-w-7xl mx-auto">
         <h2 className="text-4xl font-extrabold text-indigo-600 mb-6 border-b pb-2 border-indigo-300">{title}</h2>
         <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-lg transition-transform duration-300 hover:scale-[1.02]">
           {children}
@@ -68,6 +68,7 @@
 
     const App = () => {
       const [darkMode, setDarkMode] = useState(false);
+      const [showResume, setShowResume] = useState(false);
 
       useEffect(() => {
         document.body.classList.toggle("dark-mode", darkMode);
@@ -97,9 +98,9 @@
             <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center responsive-nav">
               <h1 className="text-3xl font-extrabold text-indigo-600">Vageesha Datta</h1>
               <nav className="flex flex-wrap gap-4 items-center text-base mt-4 md:mt-0">
-                {["Home", "About", "Education", "Experience", "Projects", "Skills", "Contact Me"].map((id) => (
+                {["Home", "About", "Education", "Experience", "Projects", "Skills", "Contact-Me"].map((id) => (
                   <a key={id} href={`#${id}`} className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 capitalize font-medium text-lg">
-                    {id}
+                    {id.replace('-', ' ')}
                   </a>
                 ))}
                 <button onClick={() => setDarkMode(!darkMode)} className="px-6 py-3 text-base rounded-xl bg-indigo-600 text-white hover:bg-indigo-700">
@@ -108,6 +109,9 @@
                 <a href="MyResume.pdf" download className="px-6 py-3 text-base rounded-xl bg-yellow-500 text-white hover:bg-yellow-600">
                   Download Resume
                 </a>
+                <button onClick={() => setShowResume(true)} className="px-6 py-3 text-base rounded-xl bg-indigo-500 text-white hover:bg-indigo-600">
+                  View Resume
+                </button>
               </nav>
             </div>
           </header>
@@ -212,6 +216,17 @@
               <p>GitHub: <a className="text-indigo-600" href="https://github.com/vageeshadatta2000">GitHub</a></p>
             </Section>
           </main>
+
+         {showResume && (
+            <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center">
+              <div className="bg-white dark:bg-gray-900 w-[90%] h-[90%] rounded-2xl shadow-2xl overflow-hidden relative">
+                <button onClick={() => setShowResume(false)} className="absolute top-4 right-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 z-10">
+                  Close
+                </button>
+                <iframe src="MyResume.pdf" title="Resume Viewer" className="w-full h-full border-none"></iframe>
+              </div>
+            </div>
+          )}
 
           <footer className="mt-20 text-center text-gray-500 py-6">
             &copy; {new Date().getFullYear()} Vageesha Datta Ganapaneni
