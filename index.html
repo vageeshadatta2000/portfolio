@@ -48,7 +48,7 @@
       flex-wrap: wrap;
     }
 
-    @keyframes fade-in-up {
+/*     @keyframes fade-in-up {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -61,7 +61,7 @@
 
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out;
-}
+} */
 
   </style>
 </head>
@@ -82,26 +82,26 @@
       </section>
     );
 
-const WelcomePopup = ({ visible, onClose }) => {
-  if (!visible) return null;
-  return (
-    <div className="fixed bottom-6 right-6 bg-white dark:bg-gray-800 shadow-2xl border border-indigo-400 dark:border-indigo-500 rounded-2xl p-6 max-w-sm z-50 animate-fade-in-up">
-      <div className="text-lg font-semibold text-indigo-600">👋 Hi there!</div>
-      <p className="mt-2 text-gray-700 dark:text-gray-300">
-        Got a question? Curious about my projects or skills? Ask the AI assistant in the bottom corner!
-      </p>
-      <button
-        onClick={() => {
-          onClose();
-          if (window.chatbase) window.chatbase('toggleChat');
-        }}
-        className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
-      >
-        Ask Now
-      </button>
-    </div>
-  );
-};
+// const WelcomePopup = ({ visible, onClose }) => {
+//   if (!visible) return null;
+//   return (
+//     <div className="fixed bottom-6 right-6 bg-white dark:bg-gray-800 shadow-2xl border border-indigo-400 dark:border-indigo-500 rounded-2xl p-6 max-w-sm z-50 animate-fade-in-up">
+//       <div className="text-lg font-semibold text-indigo-600">👋 Hi there!</div>
+//       <p className="mt-2 text-gray-700 dark:text-gray-300">
+//         Got a question? Curious about my projects or skills? Ask the AI assistant in the bottom corner!
+//       </p>
+//       <button
+//         onClick={() => {
+//           onClose();
+//           if (window.chatbase) window.chatbase('toggleChat');
+//         }}
+//         className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+//       >
+//         Ask Now
+//       </button>
+//     </div>
+//   );
+// };
 
 
     const App = () => {
@@ -113,10 +113,10 @@ const WelcomePopup = ({ visible, onClose }) => {
       }, [darkMode]);
 
 
-      useEffect(() => {
-    const timer = setTimeout(() => setWelcomeVisible(false), 10000);
-    return () => clearTimeout(timer);
-  }, []);
+  //     useEffect(() => {
+  //   const timer = setTimeout(() => setWelcomeVisible(false), 10000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
 
       useEffect(() => {
@@ -164,7 +164,7 @@ const WelcomePopup = ({ visible, onClose }) => {
           </header>
 
           <main className="pt-40 space-y-16">
-            <WelcomePopup visible={welcomeVisible} onClose={() => setWelcomeVisible(false)} />  
+      
             <Section id="Home" title="Welcome to My Portfolio">
               <div className="flex flex-col md:flex-row items-center justify-between">
                 <p className="text-lg leading-relaxed md:w-2/3">Hi, I'm <strong>Vageesha Datta Ganapaneni</strong>, a passionate ML researcher and full-stack engineer with a deep focus on system performance, LLM applications, and scalable AI architectures. This portfolio is a window into my technical journey, research innovations, and engineering craftsmanship.</p>
